@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\ProfilController;
@@ -21,8 +22,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
+Route::resource('/',LandingPageController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('dashboard',AdminController::class);
