@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Data Kategori Produk</h2>
+    <h2>Membuat Fakultas Baru</h2>
 
     @if (\Session::has('success'))
     <div class="alert alert-success">

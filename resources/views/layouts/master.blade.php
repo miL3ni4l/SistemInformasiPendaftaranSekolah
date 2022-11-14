@@ -297,7 +297,7 @@
               <a class="nav-link" href="/kategori">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
-                  Kategori
+                  Fakultas
                   <!-- <span class="badge badge-info right">{{$gurus->count()}}</span> -->
                 </p>
               </a>
@@ -307,7 +307,7 @@
               <a class="nav-link" href="/produk">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
-                  Produk
+                  Prodi
                   <!-- <span class="badge badge-info right">{{$gurus->count()}}</span> -->
                 </p>
               </a>
