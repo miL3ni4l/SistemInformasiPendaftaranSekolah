@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -13,7 +14,10 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        return view('layouts.landingpage');
+        $huruf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        $kode = strtoupper(substr(str_shuffle($huruf), 0, 7));
+        return view('layouts.landingpage', array('kode' => $kode)
+        );
     }
 
     /**
@@ -34,7 +38,8 @@ class LandingPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pendaftaran::create($request->all());
+        return redirect()->route('layouts.landingpage');
     }
 
     /**
