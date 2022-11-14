@@ -1,0 +1,48 @@
+1.composer create-project --prefer-dist laravel/laravel kominfo
+/
+composer create-project laravel/laravel kominfo
+
+2. Controller
+php artisan make:controller ProfilController --resource
+
+3. Model
+php artisan make:model Profil
+
+4. Database
+php artisan make:migration create_profils_table --create=profils
+
+5. Migrasi Databae
+php artisan migrate:fresh
+
+6. Seeder
+php artisan make:seeder ProfilsTableSeeder
+
+7. Dump
+composer dump:autoload
+
+8. Migrasi dan Data Dummy
+php artisan migrate:fresh --seed
+
+MAKE AUTH
+composer require laravel/ui
+php artisan ui bootstrap
+npm install
+npm run dev
+php artisan ui bootstrap --auth
+npm install
+npm run dev
+
+//PDF
+composer require barryvdh/laravel-dompdf
+
+//XAMPP CHANGE
+mysqld --console --skip-grant-tables --skip-external-locking
+mysqlcheck -r --database mysql --use-frm
+
+//GITHUB
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/miL3ni4l/SistemInformasiPendaftaranSekolah.git
+git push -u origin main
