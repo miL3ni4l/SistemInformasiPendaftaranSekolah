@@ -15,63 +15,37 @@ class ApiKategoriProdukController extends Controller
     public function index()
     {
         //
-        $data_kategori = KategoriProduk::all()->toArray();
-        return $data_kategori;
+        $kategori = KategoriProduk::paginate(10);
+        return response()->json([
+            'data' => $kategori
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $kategori = KategoriProduk::create([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+        return response()->json([
+            'data' => $kategori
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(KategoriProduk $kategori)
     {
-        //
+        return response()->json([
+            'data' => $kategori
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, KategoriProduk $kategori)
     {
-        //
+        $kategori->nama_kategori = $request->nama_kategori;  
+        $kategori->save();
+        return response()->json([
+            'data' => $kategori
+        ]);
     }
 
     /**
@@ -80,8 +54,12 @@ class ApiKategoriProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(KategoriProduk $kategori)
     {
-        //
+        $kategori->delete();
+        return response()->json([
+            'message' => 'Berhasil Dihapus'
+        ]);
+
     }
 }
