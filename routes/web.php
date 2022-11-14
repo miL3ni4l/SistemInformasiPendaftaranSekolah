@@ -6,6 +6,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KategoriProdukController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,8 @@ Route::resource('siswa',SiswaController::class);
 Route::resource('kategori',KategoriProdukController::class);
 Route::delete('kategori/{id}','KategoriProdukController@destroy');
 Route::post('kategori/{id}','KategoriProdukController@update');
+
+Route::resource('produk',ProdukController::class);
+Route::delete('produk/{id}','ProdukController@destroy');
+Route::post('produk/{id}','ProdukController@update');
 

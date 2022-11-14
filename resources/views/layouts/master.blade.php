@@ -297,6 +297,16 @@
               <a class="nav-link" href="/kategori">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
+                  Kategori
+                  <!-- <span class="badge badge-info right">{{$gurus->count()}}</span> -->
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/produk">
+                <i class="nav-icon fa fa-book"></i>
+                <p>
                   Produk
                   <!-- <span class="badge badge-info right">{{$gurus->count()}}</span> -->
                 </p>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('id_kategori')->references('id_kategori')->on('kategori_produk');
             $table->integer('harga');
             $table->longText('deskripsi');
-            $table->string('gambar');
+            // $table->string('gambar');
             $table->timestamps();
         });
     }
