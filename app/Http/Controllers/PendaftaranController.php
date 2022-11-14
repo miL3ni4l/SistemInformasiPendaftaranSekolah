@@ -32,12 +32,16 @@ class PendaftaranController extends Controller
         // COUNT
         $total_pendaftar = Pendaftaran::get();
         $pendaftar_pria = Pendaftaran::where('jk_pendaftar', 'P')
-        ->where('sts_pendaftar', '1')->get();
+            ->where('sts_pendaftar', '1')->get();
         $pendaftar_wanita = Pendaftaran::where('jk_pendaftar', 'W')
-        ->where('sts_pendaftar', '1')->get();
+            ->where('sts_pendaftar', '1')->get();
 
-        return view('pendaftaran.index', array('pendaftarans' => $pendaftarans, 'nama' => $nama, 'kode' => $kode,
-            'total_pendaftar' => $total_pendaftar, 'pendaftar_pria' => $pendaftar_pria, 'pendaftar_wanita' => $pendaftar_wanita)
+        return view(
+            'pendaftaran.index',
+            array(
+                'pendaftarans' => $pendaftarans, 'nama' => $nama, 'kode' => $kode,
+                'total_pendaftar' => $total_pendaftar, 'pendaftar_pria' => $pendaftar_pria, 'pendaftar_wanita' => $pendaftar_wanita
+            )
         );
     }
 
@@ -111,30 +115,30 @@ class PendaftaranController extends Controller
         return redirect()->route('pendaftaran.index');
     }
 
-        //KONFRIMASI
-        public function status($id)
-        {
-            $data = DB::table('pendaftarans')->where('id', $id)->first();
-            $status_sekarang = $data->sts_pendaftar;
-    
-            if ($status_sekarang == '1') {
-                DB::table('pendaftarans')
-                    ->where('id', $id)
-                    ->update(['sts_pendaftar' => '0']);
-                // Alert()->success('Berhasil.', 'Status batal diverifikasi !');
-            } else {
-                DB::table('pendaftarans')
-                    ->where('id', $id)
-                    ->update(['sts_pendaftar' => '1']);
-                // Alert()->success('Berhasil.', 'Status berhasil diverifikasi !');
-            }
-            return redirect()->back();
-        }
+    //KONFRIMASI
+    public function status($id)
+    {
+        $data = DB::table('pendaftarans')->where('id', $id)->first();
+        $status_sekarang = $data->sts_pendaftar;
 
-        public function cetak_pdf($id)
-        {
-            $pendaftarans = Pendaftaran::find($id);
-            $pdf = PDF::loadView('pendaftaran.laporan', compact('pendaftarans'));
-            return $pdf->download('INVOICE_' . $pendaftarans->nm_pendaftar . '.pdf');
+        if ($status_sekarang == '1') {
+            DB::table('pendaftarans')
+                ->where('id', $id)
+                ->update(['sts_pendaftar' => '0']);
+            // Alert()->success('Berhasil.', 'Status batal diverifikasi !');
+        } else {
+            DB::table('pendaftarans')
+                ->where('id', $id)
+                ->update(['sts_pendaftar' => '1']);
+            // Alert()->success('Berhasil.', 'Status berhasil diverifikasi !');
         }
+        return redirect()->back();
+    }
+
+    public function cetak_pdf($id)
+    {
+        $pendaftarans = Pendaftaran::find($id);
+        $pdf = PDF::loadView('pendaftaran.laporan', compact('pendaftarans'));
+        return $pdf->download('INVOICE_' . $pendaftarans->nm_pendaftar . '.pdf');
+    }
 }

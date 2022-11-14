@@ -70,7 +70,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <button type="button" class="btn btn-primary  btn-fw col-lg-2" data-toggle="modal" data-target="#modalDelete_Tambah"><i class="fa fa-plus"></i> Tambah</button>
+            <button type="button" class="btn btn-primary  btn-fw col-lg-2" data-toggle="modal" data-target="#modal_Tambah"><i class="fa fa-plus"></i> Tambah</button>
 
             <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -482,7 +482,7 @@
 
 <!-- MODAL TAMBAH -->
 <form method="POST" action="{{ route('pendaftaran.store') }}">
-    <div class="modal fade" id="modalDelete_Tambah" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal fade" id="modal_Tambah" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
