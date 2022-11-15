@@ -24,6 +24,7 @@ class MahasiswaController extends Controller
         } else {
             return ApiFormatter::createApi(400, 'Failed');
         }
+        
     }
 
     /**
